@@ -8,7 +8,7 @@
     -v	  	show IP / LAN information ( all devices )
     -sl		scan LAN
     -bm             bandwidth measurement
-    -lw		log wan ip\n"
+    -lw		log wan ip
     -fbr		renew fritzbox WAN IP
     -cfrp		check for required packets
 
