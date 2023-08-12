@@ -12,7 +12,7 @@
 ############################################################################################################
 #------------------------------------------------------------------------------------------------------------
 
- RequiredPackets="lynx curl geoip-bin nmap speedtest-cli fuck"
+ RequiredPackets="lynx curl geoip-bin nmap speedtest-cli"
  SpeedtestTempFile=/tmp/spdt.tmp
  MaxScriptExecutionIntervalBandwidth=180
 
@@ -30,7 +30,7 @@
  DNSServerlistNmCLI="$(nmcli -t --fields NAME con show --active 2>/dev/null)"
 
  FritzboxIP=$GatewayIP
- FritzboxPrintNewIPWanIPLogDelay=8
+ FritzboxPrintNewIPWanIPLogDelay=10
 
  Version=$(cat $(readlink -f $(which $0)) | grep "# version" | head -n1 | awk -F ":" '{print $2}' | sed 's/ //g')
  ScriptFile=$(readlink -f $(which $0))
@@ -446,9 +446,8 @@ timeout 5 wget -qO- "http://$FritzboxIP:49000/igdupnp/control/WANIPConn1" --head
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 fritzbox_renew_ip () {
 	printf " old FritzBox WAN IP: $(fritzbox_WAN_IP) \n"
-	printf " reconnecting ...\n"
 	fritzbox_reconnect 2>&1> /dev/null 2>&1> /dev/null
-	sleep $FritzboxPrintNewIPWanIPLogDelay
+	progressbar " reconnecting" "$FritzboxPrintNewIPWanIPLogDelay" "."
 	printf " new FritzBox WAN IP: $(fritzbox_WAN_IP)\n"
 }
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -497,10 +496,9 @@ fritzbox_renew_ip () {
 ##############################################   changelog   ###############################################
 ############################################################################################################
 #------------------------------------------------------------------------------------------------------------
-# TODO check why space character error in print_parser occurs when using colorcodes
 # TODO add new standalone option: list device status and MAC adresses even when LAN WAN is offline
 # TODO add option to clear log file
-# TODO user loops in prontparser => echo $STRING | awk -F " " '{printf $1; printf $2; for(i=14; i<=25; i++) printf $i }'
+# TODO user loops in printparser => echo $STRING | awk -F " " '{printf $1; printf $2; for(i=14; i<=25; i++) printf $i }'
 
 # 3.5
 # substitue tput to colorcodes
@@ -514,7 +512,6 @@ fritzbox_renew_ip () {
 
 # 3.2
 # avoid wan_ip_log interruption for missing WAN/LAN connections
-
 
 # 3.1
 # integrate wan ip log => logging wan ip
