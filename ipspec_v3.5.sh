@@ -530,4 +530,4 @@ fritzbox_renew_ip () {
 # add monocrome output
 
 # 2.7
-# LAN WAN check adde
+# LAN WAN check added
