@@ -12,3 +12,4 @@
     -fbr		renew fritzbox WAN IP
     -cfrp		check for required packets
 
+demovideo => https://youtu.be/fZ6NaLK1mSI
