@@ -13,5 +13,3 @@
     -cfrp		check for required packets
 
 demovideo => https://youtu.be/fZ6NaLK1mSI
-
-[![Video-Demonstration](https://youtu.be/fZ6NaLK1mSI) (https://youtu.be/fZ6NaLK1mSI)
