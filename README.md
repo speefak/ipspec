@@ -15,6 +15,5 @@
 demovideo => https://youtu.be/fZ6NaLK1mSI
 
 
-<video width="640" height="360" controls>
-        <source src="(https://youtu.be/fZ6NaLK1mSI)" type="video/mp4">
+<video src="(https://youtu.be/fZ6NaLK1mSI)" type="video/mp4">
     </video>
