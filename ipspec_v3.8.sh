@@ -273,7 +273,7 @@ network_information () {
 	fi
 
  	# get gateway http interface inforamtions // timeout required for mobile wlan / tethering
-	GatewayHTTPString=$(timeout 2 wget -q -O - $GatewayIP)
+	GatewayHTTPString=$(timeout 2 wget -qO- $GatewayIP 2>/dev/null)
 
 	# parse Fritzbox gateway information
 	if [[ -n $(echo $GatewayHTTPString | grep 'FRITZ!Box') ]] ;then
